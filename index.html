@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="cardMinus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="cardValue" type="text" class="form-control text-center" value="1">
+                           <button id="cardPlus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="cardAmount">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="coverMinus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="coverValue" type="text" class="form-control text-center" value="1">
+                           <button id="coverPlus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="coverAmount">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$1,278</h5>
+                        <h5>$0</h5>
+                        <h5>$1,278</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <script>
+
+      // //Trying to be using function
+      // const cardCurrentValue = document.getElementById('cardValue').value;
+      // const cardCurrentValueInt = parseInt(cardCurrentValue);
+      // console.log(cardCurrentValueInt);
+
+      // const coverCurrentValue = document.getElementById('coverValue').value;
+      // const coverCurrentValueInt = parseInt(coverCurrentValue);
+      // console.log(coverCurrentValueInt);
+
+      //For Card Area:
+      let totalCoverAmount=0;
+
+         const cardAmount = document.getElementById('cardAmount').innerText;
+         const cardAmountInt = parseInt(cardAmount);
+
+      document.getElementById('cardMinus').addEventListener('click', function(){
+         const currentNumber = document.getElementById('cardValue').value;
+         const currentNumberInt = parseInt(currentNumber);
+         
+         if(currentNumber>0){
+            document.getElementById('cardValue').value = currentNumber - 1;
+            const totalCardAmount = (currentNumber-1) * cardAmountInt;
+            document.getElementById('cardAmount').innerText = totalCardAmount;
+         }
+      })
+
+      document.getElementById('cardPlus').addEventListener('click', function(){
+         const currentNumber = document.getElementById('cardValue').value;
+         const currentNumberInt = parseInt(currentNumber);
+            document.getElementById('cardValue').value = currentNumberInt + 1;
+            const totalCardAmount = (currentNumberInt+1) * cardAmountInt;
+            document.getElementById('cardAmount').innerText = totalCardAmount;
+      })
+
+      //For Cover Area
+      const coverAmount = document.getElementById('coverAmount').innerText;
+         const coverAmountInt = parseInt(coverAmount);
+
+      document.getElementById('coverMinus').addEventListener('click', function(){
+         const currentNumber = document.getElementById('coverValue').value;
+         const currentNumberInt = parseInt(currentNumber);
+         
+         if(currentNumber>0){
+            document.getElementById('coverValue').value = currentNumber - 1;
+            const totalCoverAmount = (currentNumberInt-1) * coverAmountInt;
+            document.getElementById('coverAmount').innerText = totalCoverAmount;;
+         }
+      })
+      document.getElementById('coverPlus').addEventListener('click', function(){
+         const currentNumber = document.getElementById('coverValue').value;
+         const currentNumberInt = parseInt(currentNumber);
+            document.getElementById('coverValue').value = currentNumberInt + 1;
+            totalCoverAmount = (currentNumberInt+1) * coverAmountInt;
+            console.log(totalCoverAmount);
+            document.getElementById('coverAmount').innerText = totalCoverAmount;
+      })
+   </script>
+</body>
+
+</html>
